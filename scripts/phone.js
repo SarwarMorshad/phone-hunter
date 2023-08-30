@@ -53,7 +53,7 @@ const handleSearch = (isShowAll) => {
   const searchText = searchField.value;
   //   console.log(searchText);
   loadPhone(searchText, isShowAll);
-  //   searchField.value = "";
+  searchField.value = "";
 };
 
 // Toggle Spinner
@@ -83,10 +83,10 @@ const showPhoneDetails = (phone) => {
   phoneDetailsContainer.innerHTML = `
     <center><figure class="pt-11 "><img src="${phone.image}" alt="Phone" /></figure></center>
     <h3 class="font-bold text-lg mb-2">${phone.name}</h3>
-    <P class="mb-2">Storage: <span>${phone.mainFeatures.storage}</span></P>
-    <p class="mb-2">Display: <span>${phone.mainFeatures.displaySize}</span></p>
-    <p class="mb-2">Memory: <span>${phone.mainFeatures.memory}</span></p>
-    <p class="mb-2">Release Date: <span>${phone.releaseDate}</span></p>
+    <P class="mb-2"><span class="font-bold">Storage: </span><span>${phone.mainFeatures.storage}</span></P>
+    <p class="mb-2"><span class="font-bold">Display: </span><span>${phone.mainFeatures.displaySize}</span></p>
+    <p class="mb-2"><span class="font-bold">Memory: </span><span>${phone.mainFeatures.memory}</span></p>
+    <p class="mb-2"><span class="font-bold">Release Date: </span><span>${phone.releaseDate}</span></p>
     `;
 
   show_details_modal.showModal();

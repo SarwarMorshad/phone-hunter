@@ -7,9 +7,36 @@
     <!-- Daisy Ui & Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.3/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+        font-family: "Work Sans", sans-serif;
+      }
+    </style>
   </head>
-  <body>
-    <header></header>
+  <body class="font-poppins">
+    <header class="container mx-auto">
+      <!-- nav bar -->
+      <div class="mt-8">
+        <nav class="flex justify-between items-center">
+          <h3 class="text-[#403F3F] font-bold text-3xl">Hot Gadgets</h3>
+          <ul>
+            <li>
+              <button class="btn-primary rounded-xl bg-[#0D6EFD] border-0 text-white py-5 px-9">
+                Sign Up
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <main>
       <!-- Search Button Section -->
       <section class="container mx-auto">
