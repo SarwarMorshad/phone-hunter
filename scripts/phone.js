@@ -86,7 +86,10 @@ const showPhoneDetails = (phone) => {
     <P class="mb-2"><span class="font-bold">Storage: </span><span>${phone.mainFeatures.storage}</span></P>
     <p class="mb-2"><span class="font-bold">Display: </span><span>${phone.mainFeatures.displaySize}</span></p>
     <p class="mb-2"><span class="font-bold">Memory: </span><span>${phone.mainFeatures.memory}</span></p>
-    <p class="mb-2"><span class="font-bold">Release Date: </span><span>${phone.releaseDate}</span></p>
+    <p class="mb-2">
+    <span class="font-bold">Release Date: </span>
+    <span>${phone?.releaseDate || "Data Not found"}</span>
+    </p>
     `;
 
   show_details_modal.showModal();
