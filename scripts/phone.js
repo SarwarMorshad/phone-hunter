@@ -1,26 +1,30 @@
-const loadPhone = async (searchText) => {
+const loadPhone = async (searchText, isShowAll) => {
   const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await response.json();
   const phones = data.data;
   //   console.log(phone);
-  displayPhones(phones);
+  displayPhones(phones, isShowAll);
 };
 
-const displayPhones = (phones) => {
+const displayPhones = (phones, isShowAll) => {
   const phoneContainer = document.getElementById("phone-container");
   //   Clear Container
   phoneContainer.textContent = "";
 
   //   Display show all
   const showAllContainer = document.getElementById("show-all-container");
-  if (phones.length > 12) {
+  if (phones.length > 12 && !isShowAll) {
     showAllContainer.classList.remove("hidden");
   } else {
     showAllContainer.classList.add("hidden");
   }
 
-  // display only 12 phones
-  phones = phones.slice(0, 12);
+  //   console.log("is show", isShowAll);
+
+  // display only 12 phones if not show all clicked
+  if (!isShowAll) {
+    phones = phones.slice(0, 12);
+  }
 
   phones.forEach((phone) => {
     // console.log(phone);
@@ -42,14 +46,14 @@ const displayPhones = (phones) => {
 };
 
 // Handle Search button
-const handleSearch = () => {
+const handleSearch = (isShowAll) => {
   //   console.log("Handle");
   toggleLoadingSpinner(true);
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
   //   console.log(searchText);
-  loadPhone(searchText);
-  searchField.value = "";
+  loadPhone(searchText, isShowAll);
+  //   searchField.value = "";
 };
 
 // Toggle Spinner
@@ -61,6 +65,11 @@ const toggleLoadingSpinner = (isLoading) => {
   } else {
     loadingSpinner.classList.add("hidden");
   }
+};
+
+// Handle Show all
+const handleShowAll = () => {
+  handleSearch(true);
 };
 
 // loadPhone();
