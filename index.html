@@ -9,27 +9,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header>
-      <h1>All Phones</h1>
-    </header>
+    <header></header>
     <main>
       <!-- Search Button Section -->
-      <section class="container mx-auto mt-8 bg-slate-400 rounded-xl">
-        <div class="flex justify-center p-5 gap-4">
+      <section class="container mx-auto">
+        <div class="flex justify-center items-center p-5 gap-4 mt-8 bg-slate-400 rounded-xl">
           <input
             id="search-field"
             type="text"
             placeholder="Search your phone here"
             class="input input-bordered w-full max-w-xs"
           />
-          <button class="btn btn-accent" onclick="handleSearch()">Accent</button>
+          <button class="btn btn-accent" onclick="handleSearch()">Search</button>
+        </div>
+        <!-- Loading  Spinner-->
+        <div id="loading-spinner" class="mt-16 text-center hidden">
+          <span class="loading loading-dots loading-lg"></span>
         </div>
       </section>
       <section class="container mx-auto mt-8">
         <div
           id="phone-container"
-          class="grid grid-cols-1 md:grid grid-cols-2 lg:grid grid-cols-3 gap-8"
+          class="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-8"
         ></div>
+        <!-- Show all button -->
+        <div id="show-all-container" class="hidden text-center my-5">
+          <button class="btn btn-active btn-primary">Show All</button>
+        </div>
       </section>
     </main>
     <footer></footer>

@@ -11,6 +11,17 @@ const displayPhones = (phones) => {
   //   Clear Container
   phoneContainer.textContent = "";
 
+  //   Display show all
+  const showAllContainer = document.getElementById("show-all-container");
+  if (phones.length > 12) {
+    showAllContainer.classList.remove("hidden");
+  } else {
+    showAllContainer.classList.add("hidden");
+  }
+
+  // display only 12 phones
+  phones = phones.slice(0, 12);
+
   phones.forEach((phone) => {
     // console.log(phone);
     const phoneCard = document.createElement("div");
@@ -27,15 +38,29 @@ const displayPhones = (phones) => {
     `;
     phoneContainer.appendChild(phoneCard);
   });
+  toggleLoadingSpinner(false);
 };
 
 // Handle Search button
 const handleSearch = () => {
   //   console.log("Handle");
+  toggleLoadingSpinner(true);
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
   //   console.log(searchText);
   loadPhone(searchText);
+  searchField.value = "";
+};
+
+// Toggle Spinner
+const toggleLoadingSpinner = (isLoading) => {
+  const loadingSpinner = document.getElementById("loading-spinner");
+
+  if (isLoading) {
+    loadingSpinner.classList.remove("hidden");
+  } else {
+    loadingSpinner.classList.add("hidden");
+  }
 };
 
 // loadPhone();
