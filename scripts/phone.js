@@ -36,7 +36,7 @@ const displayPhones = (phones, isShowAll) => {
       <h2 class="card-title">${phone.phone_name}</h2>
       <p>If a dog chews shoes whose shoes does he choose?</p>
       <div class="card-actions justify-center">
-        <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary">Details</button>
+        <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary w-1/2 rounded-2xl bg-[#0D6EFD] text-white border-0">Show Details</button>
       </div>
     </div>
     `;
@@ -72,13 +72,23 @@ const handleShowDetails = async (id) => {
   const response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
   const data = await response.json();
   const phone = data.data;
-  //   console.log(phone);
+  console.log(phone);
   showPhoneDetails(phone);
 };
 
 const showPhoneDetails = (phone) => {
-  const phoneName = document.getElementById("phone-name");
-  phoneName.innerText = phone.name;
+  /* const phoneName = document.getElementById("phone-name");
+  phoneName.innerText = phone.name; */
+  const phoneDetailsContainer = document.getElementById("phone-details-container");
+  phoneDetailsContainer.innerHTML = `
+    <center><figure class="pt-11 "><img src="${phone.image}" alt="Phone" /></figure></center>
+    <h3 class="font-bold text-lg mb-2">${phone.name}</h3>
+    <P class="mb-2">Storage: <span>${phone.mainFeatures.storage}</span></P>
+    <p class="mb-2">Display: <span>${phone.mainFeatures.displaySize}</span></p>
+    <p class="mb-2">Memory: <span>${phone.mainFeatures.memory}</span></p>
+    <p class="mb-2">Release Date: <span>${phone.releaseDate}</span></p>
+    `;
+
   show_details_modal.showModal();
 };
 
